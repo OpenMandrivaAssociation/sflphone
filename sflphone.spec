@@ -3,7 +3,7 @@
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
 Version:	0.9.11
-Release:	%mkrel 1
+Release:	%mkrel 2
 Url:		http://www.sflphone.org/
 Source0:	https://projects.savoirfairelinux.com/attachments/download/1811/%{name}-%{version}.tar.gz
 # pjsip is GPLv2; sflphone-common is GPLv3
@@ -38,7 +38,7 @@ Features highlight:
 Summary: A robust standards-compliant enterprise softphone
 License: GPLv2
 Group:   Communications
-Requires: %{name}-%{version}
+Requires: %{name}
 
 %description client-gnome
 This package contains the GNOME client for SFLphone.
