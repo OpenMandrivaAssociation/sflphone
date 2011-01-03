@@ -1,11 +1,10 @@
-%define _disable_ld_as_needed 1
-
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
 Version:	0.9.11
-Release:	%mkrel 2
+Release:	%mkrel 3
 Url:		http://www.sflphone.org/
 Source0:	https://projects.savoirfairelinux.com/attachments/download/1811/%{name}-%{version}.tar.gz
+Patch0:		sflphone-0.9.11-fix-underlinking.patch
 # pjsip is GPLv2; sflphone-common is GPLv3
 License:	GPLv2 and GPLv3
 Group:		Communications
@@ -45,6 +44,8 @@ This package contains the GNOME client for SFLphone.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1 -b .underlinking
+(cd sflphone-client-gnome && autoreconf -fi)
 
 %build
 pushd sflphone-common/libs/pjproject
