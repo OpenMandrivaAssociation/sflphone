@@ -1,15 +1,16 @@
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
-Version:	0.9.11
-Release:	%mkrel 3
+Version:	0.9.13
+Release:	%mkrel 1
 Url:		http://www.sflphone.org/
 Source0:	https://projects.savoirfairelinux.com/attachments/download/1811/%{name}-%{version}.tar.gz
 Patch0:		sflphone-0.9.11-fix-underlinking.patch
+Patch1:		fix_missing_include-file-error-in-f15.patch
 # pjsip is GPLv2; sflphone-common is GPLv3
 License:	GPLv2 and GPLv3
 Group:		Communications
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	openssl-devel libcommoncpp-devel yaml-devel
+BuildRequires:	openssl-devel libcommoncpp-devel yaml-devel celt-devel
 BuildRequires:	libccrtp-devel libzrtpcpp-devel astyle libgsm-devel
 BuildRequires:	libsamplerate-devel libalsa-devel libpulseaudio-devel libspeex-devel
 BuildRequires:	libuuid-devel libdbus-1-devel libexpat-devel
@@ -44,8 +45,9 @@ This package contains the GNOME client for SFLphone.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1 -b .underlinking
-(cd sflphone-client-gnome && autoreconf -fi)
+%patch1 -p1
+#%patch0 -p1 -b .underlinking
+#(cd sflphone-client-gnome && autoreconf -fi)
 
 %build
 pushd sflphone-common/libs/pjproject
