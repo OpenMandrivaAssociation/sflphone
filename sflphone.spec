@@ -6,6 +6,7 @@ Url:		http://www.sflphone.org/
 Source0:	https://projects.savoirfairelinux.com/attachments/download/1811/%{name}-%{version}.tar.gz
 Patch0:		sflphone-0.9.11-fix-underlinking.patch
 Patch1:		fix_missing_include-file-error-in-f15.patch
+Patch2:		sflphone-0.9.12-libnotify-0.7.patch
 # pjsip is GPLv2; sflphone-common is GPLv3
 License:	GPLv2 and GPLv3
 Group:		Communications
@@ -46,6 +47,7 @@ This package contains the GNOME client for SFLphone.
 %prep
 %setup -q -n %{name}-%{version}
 %patch1 -p1
+%patch2 -p0
 #%patch0 -p1 -b .underlinking
 #(cd sflphone-client-gnome && autoreconf -fi)
 
