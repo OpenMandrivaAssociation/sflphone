@@ -1,7 +1,7 @@
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
 Version:	0.9.13
-Release:	%mkrel 3
+Release:	%mkrel 4
 Url:		http://www.sflphone.org/
 Source0:	https://projects.savoirfairelinux.com/attachments/download/1811/%{name}-%{version}.tar.gz
 Patch0:		sflphone-0.9.11-fix-underlinking.patch
