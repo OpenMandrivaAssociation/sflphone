@@ -4,13 +4,8 @@
 
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
-<<<<<<< .mine
 Version:	1.0.2
 Release:	%mkrel 1
-=======
-Version:	0.9.13
-Release:	%mkrel 4
->>>>>>> .r773452
 Url:		http://www.sflphone.org/
 Source0:	https://projects.savoirfairelinux.com/attachments/download/2865/%{name}-%{version}.tar.gz
 # pjsip is GPLv2+; sflphone-common is GPLv3+
