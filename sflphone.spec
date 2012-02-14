@@ -14,8 +14,8 @@ Group:		Communications
 BuildRequires:	openssl-devel libcommoncpp-devel yaml-devel celt-devel
 BuildRequires:	libccrtp-devel libzrtpcpp-devel astyle libgsm-devel
 BuildRequires:	libsamplerate-devel libalsa-devel libpulseaudio-devel libspeex-devel
-BuildRequires:	libuuid-devel libdbus-1-devel libexpat-devel
-BuildRequires:	libdbus-glib-1-devel libnotify-devel gtk+3-devel glib2-devel
+BuildRequires:	libuuid-devel dbus-devel libexpat-devel
+BuildRequires:	dbus-glib-devel libnotify-devel gtk+3-devel glib2-devel
 BuildRequires:	webkitgtk3-devel libgnomeui2-devel gnome-doc-utils
 BuildRequires:	evolution-data-server-devel libcheck-devel >= 0.9.4
 BuildRequires:	pcre-devel
