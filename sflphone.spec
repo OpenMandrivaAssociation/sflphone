@@ -15,7 +15,7 @@ Patch0:		sflphone-1.1.0-mdv-glib.patch
 BuildRequires:	openssl-devel libcommoncpp-devel yaml-devel celt-devel
 BuildRequires:	ccrtp-devel pkgconfig(libzrtpcpp) astyle gsm-devel
 BuildRequires:	pkgconfig(samplerate) pkgconfig(alsa) pulseaudio-devel speex-devel
-BuildRequires:	pkgconfig(uuid) dbus-devel pkgconfig(expat)
+BuildRequires:	pkgconfig(uuid) dbus-devel expat-devel
 BuildRequires:	dbus-glib-devel pkgconfig(libnotify) gtk+3-devel glib2-devel
 BuildRequires:	webkitgtk3-devel pkgconfig(libgnomeui-2.0) gnome-doc-utils
 BuildRequires:	evolution-data-server-devel check-devel >= 0.9.4
