@@ -24,7 +24,7 @@ BuildRequires:	cmake
 BuildRequires:	kdepim4-devel
 BuildRequires:	dbus-c++-devel
 BuildRequires:	pkgconfig(libebook-1.2)
-BuildRequires:	gnome-doc-utils-devel
+BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:	rarian
 Suggests:	%{name}-client
 
