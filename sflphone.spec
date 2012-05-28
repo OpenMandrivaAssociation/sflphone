@@ -5,23 +5,27 @@
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
 Version:	1.1.0
-Release:	%mkrel 1
+Release:	1
 Url:		http://www.sflphone.org/
 Source0:	https://projects.savoirfairelinux.com/attachments/download/2865/%{name}-%{version}.tar.gz
 # pjsip is GPLv2+; sflphone-common is GPLv3+
 License:	GPLv2+ and GPLv3+
 Group:		Communications
+Patch0:		sflphone-1.1.0-mdv-glib.patch
 BuildRequires:	openssl-devel libcommoncpp-devel yaml-devel celt-devel
-BuildRequires:	libccrtp-devel libzrtpcpp-devel astyle libgsm-devel
-BuildRequires:	libsamplerate-devel libalsa-devel libpulseaudio-devel libspeex-devel
-BuildRequires:	libuuid-devel dbus-devel libexpat-devel
-BuildRequires:	dbus-glib-devel libnotify-devel gtk+3-devel glib2-devel
-BuildRequires:	webkitgtk3-devel libgnomeui2-devel gnome-doc-utils
-BuildRequires:	evolution-data-server-devel libcheck-devel >= 0.9.4
+BuildRequires:	ccrtp-devel pkgconfig(libzrtpcpp) astyle gsm-devel
+BuildRequires:	pkgconfig(samplerate) pkgconfig(alsa) pulseaudio-devel speex-devel
+BuildRequires:	pkgconfig(uuid) dbus-devel pkgconfig(expat)
+BuildRequires:	dbus-glib-devel pkgconfig(libnotify) gtk+3-devel glib2-devel
+BuildRequires:	webkitgtk3-devel pkgconfig(libgnomeui-2.0) gnome-doc-utils
+BuildRequires:	evolution-data-server-devel check-devel >= 0.9.4
 BuildRequires:	pcre-devel
 BuildRequires:	cmake
 BuildRequires:	kdepim4-devel
 BuildRequires:	dbus-c++-devel
+BuildRequires:	pkgconfig(libebook-1.2)
+BuildRequires:	gnome-doc-utils-devel
+BuildRequires:	rarian
 Suggests:	%{name}-client
 
 %description
@@ -82,8 +86,9 @@ Provides: qtsflphone-devel = %{EVRD}
 This package contains Qt development files for SFLphone.
 
 %prep
-%setup -q -n %{name}
-find kde/ -type f -not -name '*.sh' -exec chmod a-x {} \;
+%setup -q
+%patch0 -p1
+#find kde/ -type f -not -name '*.sh' -exec chmod a-x {} \;
 
 %build
 pushd daemon/libs/pjproject
@@ -110,23 +115,19 @@ pushd gnome
 %make
 popd
 
-pushd kde
-%cmake
-%make
-popd
+#pushd kde
+#cmake
+#make
+#popd
 
 %install
 %makeinstall_std -C daemon
 %makeinstall_std -C plugins
 %makeinstall_std -C gnome
-%makeinstall_std -C kde/build
-
-install -d %{buildroot}%{_docdir}/slphone-plugins
-install -d %{buildroot}%{_docdir}/slphone-client-gnome
-install -d %{buildroot}%{_docdir}/slphone-client-kde
+#makeinstall_std -C kde/build
 
 %find_lang %{name}-client-gnome --with-gnome
-%find_lang %{name}-client-kde --with-kde
+#find_lang %{name}-client-kde --with-kde
 
 %files
 %doc daemon/AUTHORS daemon/NEWS daemon/README daemon/TODO
@@ -158,22 +159,22 @@ install -d %{buildroot}%{_docdir}/slphone-client-kde
 %{_datadir}/%{name}/ui/
 %{_datadir}/%{name}/webkit/
 
-%files client-kde -f %{name}-client-kde.lang
-%doc kde/AUTHORS kde/NEWS kde/README
-%{_bindir}/%{name}-client-kde
-%{_kde_appsdir}/*
-%{_kde_libdir}/kde4/*
-%{_kde_applicationsdir}/*
-%{_mandir}/man1/sflphone-client-kde.1*
-%{_kde_services}/*
-%{_iconsdir}/hicolor/*/apps/sflphone-client-kde.*
-%{_kde_docdir}/HTML/en/*
-%{_datadir}/config.kcfg/sflphone-client-kde.kcfg
+#files client-kde -f %{name}-client-kde.lang
+#doc kde/AUTHORS kde/NEWS kde/README
+#%{_bindir}/%{name}-client-kde
+#%{_kde_appsdir}/*
+#%{_kde_libdir}/kde4/*
+#%{_kde_applicationsdir}/*
+#%{_mandir}/man1/sflphone-client-kde.1*
+#%{_kde_services}/*
+#%{_iconsdir}/hicolor/*/apps/sflphone-client-kde.*
+#%{_kde_docdir}/HTML/en/*
+#%{_datadir}/config.kcfg/sflphone-client-kde.kcfg
 
-%files -n %{libqtsflphone}
-%{qt4lib}/libqtsflphone.so.%{major}
-%{qt4lib}/libqtsflphone.so.%{version}
+#files -n %{libqtsflphone}
+#%{qt4lib}/libqtsflphone.so.%{major}
+#%{qt4lib}/libqtsflphone.so.%{version}
 
-%files -n %{libqtsflphonedevel}
-%{qt4lib}/libqtsflphone.so
-%{_includedir}/qtsflphone/
+#files -n %{libqtsflphonedevel}
+#%{qt4lib}/libqtsflphone.so
+#%{_includedir}/qtsflphone/
