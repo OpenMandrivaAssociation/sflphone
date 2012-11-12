@@ -1,0 +1,12 @@
+Index: sflphone-1.1.0/plugins/addressbook/evolution/eds.c
+===================================================================
+--- sflphone-1.1.0.orig/plugins/addressbook/evolution/eds.c
++++ sflphone-1.1.0/plugins/addressbook/evolution/eds.c
+@@ -37,7 +37,6 @@
+  */
+ 
+ #include <glib.h>
+-#include <glib/gstring.h>
+ #include <string.h>
+ #include <pango/pango.h>
+ #include "eds.h"
