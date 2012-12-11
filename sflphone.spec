@@ -4,14 +4,15 @@
 
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
-Version:	1.1.0
+Version:	1.2.0
 Release:	1
 Url:		http://www.sflphone.org/
-Source0:	https://projects.savoirfairelinux.com/attachments/download/2865/%{name}-%{version}.tar.gz
+#Source0:	https://projects.savoirfairelinux.com/attachments/download/2865/%{name}-%{version}.tar.gz
+# some files are missed in original tarball, so using version from git
+Source0:	%{name}-%{version}.tar.xz
 # pjsip is GPLv2+; sflphone-common is GPLv3+
 License:	GPLv2+ and GPLv3+
 Group:		Communications
-Patch0:		sflphone-1.1.0-mdv-glib.patch
 BuildRequires:	openssl-devel libcommoncpp-devel yaml-devel celt-devel
 BuildRequires:	ccrtp-devel pkgconfig(libzrtpcpp) astyle gsm-devel
 BuildRequires:	pkgconfig(samplerate) pkgconfig(alsa) pulseaudio-devel speex-devel
@@ -20,8 +21,8 @@ BuildRequires:	dbus-glib-devel pkgconfig(libnotify) gtk+3-devel glib2-devel
 BuildRequires:	webkitgtk3-devel pkgconfig(libgnomeui-2.0) gnome-doc-utils
 BuildRequires:	evolution-data-server-devel check-devel >= 0.9.4
 BuildRequires:	pcre-devel
-BuildRequires:	cmake
-BuildRequires:	kdepim4-devel
+#BuildRequires:	cmake
+#BuildRequires:	kdepim4-devel
 BuildRequires:	dbus-c++-devel
 BuildRequires:	pkgconfig(libebook-1.2)
 BuildRequires:	pkgconfig(gnome-doc-utils)
@@ -87,7 +88,6 @@ This package contains Qt development files for SFLphone.
 
 %prep
 %setup -q
-%patch0 -p1
 #find kde/ -type f -not -name '*.sh' -exec chmod a-x {} \;
 
 %build
@@ -157,7 +157,7 @@ popd
 %{_datadir}/%{name}/*.svg
 %{_datadir}/%{name}/*.gif
 %{_datadir}/%{name}/ui/
-%{_datadir}/%{name}/webkit/
+#%{_datadir}/%{name}/webkit/
 
 #files client-kde -f %{name}-client-kde.lang
 #doc kde/AUTHORS kde/NEWS kde/README
