@@ -1,16 +1,19 @@
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
-Version:	1.2.0
-Release:	2
+Version:	1.3.0
+Release:	1
 # pjsip is GPLv2+; sflphone-common is GPLv3+
 License:	GPLv2+ and GPLv3+
 Group:		Communications
 Url:		http://www.sflphone.org/
 #Source0:	https://projects.savoirfairelinux.com/attachments/download/2865/%{name}-%{version}.tar.gz
 # some files are missed in original tarball, so using version from git
-Source0:	%{name}-%{version}.tar.xz
+Source0:	https://projects.savoirfairelinux.com/attachments/download/9198/%{name}-%{version}.tar.gz
 BuildRequires:	astyle
+BuildRequires:	gnome-common
+BuildRequires:	intltool
 BuildRequires:	rarian
+BuildRequires:	yelp-tools
 BuildRequires:	gsm-devel
 BuildRequires:	pkgconfig(alsa)
 BuildRequires:	pkgconfig(celt)
@@ -89,20 +92,18 @@ Provides:	%{name}-client = %{EVRD}
 %description client-gnome
 This package contains the GNOME client for SFLphone.
 
-%files client-gnome -f %{name}-client-gnome.lang
+%files client-gnome -f %{name}.lang
 %doc gnome/AUTHORS gnome/README gnome/NEWS
-%{_sysconfdir}/gconf/schemas/sflphone-client-gnome.schemas
 %{_bindir}/%{name}
 %{_bindir}/%{name}-client-gnome
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/gnome/help/%{name}/
 %{_mandir}/man1/sflphone.1*
 %{_mandir}/man1/sflphone-client-gnome.1*
-%{_datadir}/omf/%{name}/
 %{_datadir}/pixmaps/%{name}.svg
 %{_datadir}/%{name}/*.svg
 %{_datadir}/%{name}/*.gif
 %{_datadir}/%{name}/ui/
+%{_datadir}/glib-2.0/schemas/org.sflphone.SFLphone.gschema.xml
 
 #----------------------------------------------------------------------------
 
@@ -110,7 +111,7 @@ This package contains the GNOME client for SFLphone.
 %setup -q
 
 %build
-pushd daemon/libs/pjproject
+pushd daemon/libs/pjproject-2.1.0
 %configure2_5x --enable-libsamplerate
 make dep
 make
@@ -139,5 +140,5 @@ popd
 %makeinstall_std -C plugins
 %makeinstall_std -C gnome
 
-%find_lang %{name}-client-gnome --with-gnome
+%find_lang %{name} --with-gnome
 
