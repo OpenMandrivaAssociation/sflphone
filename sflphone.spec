@@ -1,7 +1,7 @@
 Summary:	A robust standards-compliant enterprise softphone
 Name:		sflphone
 Version:	1.3.0
-Release:	1
+Release:	2
 # pjsip is GPLv2+; sflphone-common is GPLv3+
 License:	GPLv2+ and GPLv3+
 Group:		Communications
