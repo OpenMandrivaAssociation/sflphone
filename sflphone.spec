@@ -5,7 +5,7 @@ Release:	2
 # pjsip is GPLv2+; sflphone-common is GPLv3+
 License:	GPLv2+ and GPLv3+
 Group:		Communications
-Url:		http://www.sflphone.org/
+Url:		https://www.sflphone.org/
 #Source0:	https://projects.savoirfairelinux.com/attachments/download/2865/%{name}-%{version}.tar.gz
 # some files are missed in original tarball, so using version from git
 Source0:	https://projects.savoirfairelinux.com/attachments/download/9198/%{name}-%{version}.tar.gz
